@@ -23,9 +23,22 @@ def test():
     #return "Test" # testing 
     return(get_api_key())
 
-@app.route("/service_account")
-def serviceAccount():
-    return os.environment.get("SERVICE_ACCOUNT")
+@app.route("/cloud-storage-buckets")
+def cloud_storage_buckets():
+    try:
+        # Authenticate using the default credentials
+        client = storage.Client()
+
+        # Fetch the list of Cloud Storage buckets
+        buckets = list(client.list_buckets())
+
+        # Extract bucket names
+        bucket_names = [bucket.name for bucket in buckets]
+
+        # Return the list of bucket names as JSON
+        return jsonify({"buckets": bucket_names})
+    except Exception as e:
+        return f"Error: {str(e)}"
         
     
 
