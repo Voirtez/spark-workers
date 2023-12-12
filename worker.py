@@ -3,8 +3,6 @@ from flask import request
 import requests
 import os
 import json
-from flask import Flask, render_template, jsonify
-from google.cloud import storage
 app = Flask(__name__)
 
 def get_api_key() -> str:
@@ -25,25 +23,20 @@ def test():
     #return "Test" # testing 
     return(get_api_key())
 
-@app.route("/cloud-storage-buckets")
-def cloud_storage_buckets():
-    try:
-        # Authenticate using the default credentials
-        client = storage.Client()
+@app.route("/extra")
+def extra():
+    list = []
 
-        # Fetch the list of Cloud Storage buckets
-        buckets = list(client.list_buckets())
+    a = 0
+    b = 1
 
-        # Extract bucket names
-        bucket_names = [bucket.name for bucket in buckets]
+    while b < 100:
+        list.append(b)
+        a, b = b, a + b
 
-        # Return the list of bucket names as JSON
-        return jsonify({"buckets": bucket_names})
-    except Exception as e:
-        return f"Error: {str(e)}"
+    return list
         
     
-
 @app.route("/add",methods=['GET','POST'])
 def add():
   if request.method=='GET':
