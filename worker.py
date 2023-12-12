@@ -23,6 +23,12 @@ def test():
     #return "Test" # testing 
     return(get_api_key())
 
+@app.route("/service_account")
+def serviceAccount():
+    return os.environment.get("SERVICE_ACCOUNT")
+        
+    
+
 @app.route("/add",methods=['GET','POST'])
 def add():
   if request.method=='GET':
