@@ -30,7 +30,7 @@ def extra():
     a = 0
     b = 1
 
-    while b < 100:
+    while b < 1000:
         list.append(b)
         a, b = b, a + b
 
