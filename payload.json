@@ -12,7 +12,7 @@
       "deviceName": "slave1",
       "initializeParams": {
         "diskSizeGb": "10",
-        "diskType": "projects/test-cloud-flask-run/zones/us-west4-b/diskTypes/pd-balanced",
+        "diskType": "projects/test-cloud-flask-run/zones/europe-west1-b/diskTypes/pd-balanced",
         "labels": {},
         "sourceImage": "projects/debian-cloud/global/images/debian-11-bullseye-v20221102"
       },
@@ -45,7 +45,7 @@
         }
       ],
       "stackType": "IPV4_ONLY",
-      "subnetwork": "projects/test-cloud-flask-run/regions/europe-west1/subnetworks/default"
+      "subnetwork": "projects/test-cloud-flask-run/regions/europe-west1-b/subnetworks/default"
     }
   ],
   "reservationAffinity": {
